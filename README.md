@@ -215,29 +215,40 @@ Research Interests:
 
 This project represents an early-stage exploration of **efficient deep learning for real-world AI systems**, with ongoing work extending toward **medical imaging and clinical AI applications**.
 
-```markdown
-## 🧠 Research Pipeline
+## 🧩 Model Architecture
 
 ```mermaid
-flowchart LR
-    A[Small-Sample Image Dataset] --> B[Preprocessing & Augmentation]
-    B --> C[Pretrained CNN Backbones]
+flowchart TD
+    A[Input Images<br/>Rare / Small-Sample Dataset] --> B[Data Preprocessing]
+    B --> B1[Resize to 150×150]
+    B1 --> B2[Normalization]
+    B2 --> B3[Data Augmentation<br/>rotation / crop / flip / scale]
 
-    C --> C1[AlexNet]
-    C --> C2[VGG16]
-    C --> C3[GoogLeNet]
-    C --> C4[ResNet]
+    B3 --> C[Transfer Learning Stage]
 
-    C1 --> D[Fine-Tuned Teacher Models]
-    C2 --> D
-    C3 --> D
-    C4 --> D
+    C --> T1[AlexNet]
+    C --> T2[VGG16]
+    C --> T3[GoogLeNet]
+    C --> T4[ResNet]
 
-    D --> E[Knowledge Distillation]
-    E --> F[Lightweight Student Network]
+    T1 --> D1[Replace Final Layer<br/>Fine-Tuning]
+    T2 --> D2[Replace Final Layer<br/>Fine-Tuning]
+    T3 --> D3[Replace Final Layer<br/>Fine-Tuning]
+    T4 --> D4[Replace Final Layer<br/>Fine-Tuning]
 
-    F --> G[Efficient Image Classification]
-    G --> H[Transferable to Medical AI]
-    H --> H1[Tumor Classification]
-    H --> H2[Lesion Detection]
-    H --> H3[Clinical Edge Deployment]
+    D1 --> E[Teacher Models]
+    D2 --> E
+    D3 --> E
+    D4 --> E
+
+    E --> F[Knowledge Distillation]
+    F --> F1[Soft Labels]
+    F --> F2[Hard Labels]
+    F1 --> G[Lightweight Student Model]
+    F2 --> G
+
+    G --> H[Efficient Inference]
+    H --> H1[High Accuracy]
+    H --> H2[Low Parameters]
+    H --> H3[Low FLOPs]
+    H --> H4[Deployment on Edge / Clinical Devices]
