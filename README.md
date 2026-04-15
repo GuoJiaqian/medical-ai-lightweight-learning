@@ -214,3 +214,30 @@ Research Interests:
 ## ⭐ Research Note
 
 This project represents an early-stage exploration of **efficient deep learning for real-world AI systems**, with ongoing work extending toward **medical imaging and clinical AI applications**.
+
+```markdown
+## 🧠 Research Pipeline
+
+```mermaid
+flowchart LR
+    A[Small-Sample Image Dataset] --> B[Preprocessing & Augmentation]
+    B --> C[Pretrained CNN Backbones]
+
+    C --> C1[AlexNet]
+    C --> C2[VGG16]
+    C --> C3[GoogLeNet]
+    C --> C4[ResNet]
+
+    C1 --> D[Fine-Tuned Teacher Models]
+    C2 --> D
+    C3 --> D
+    C4 --> D
+
+    D --> E[Knowledge Distillation]
+    E --> F[Lightweight Student Network]
+
+    F --> G[Efficient Image Classification]
+    G --> H[Transferable to Medical AI]
+    H --> H1[Tumor Classification]
+    H --> H2[Lesion Detection]
+    H --> H3[Clinical Edge Deployment]
